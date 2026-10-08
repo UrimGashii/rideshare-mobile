@@ -7,7 +7,7 @@
 - `schema.sql` krijon tabelën `udhetimet` dhe tri të dhënat fiktive.
 - `DATABASE_URL` lexohet vetëm në server dhe përjashtohet nga Git me `.env*`.
 
-## Prova 1: Ndryshimi në databazë
+## Prova 1
 
 Hapat:
 
@@ -21,7 +21,7 @@ Rezultati:
 
 Pas rifreskimit, lista dhe faqja `/udhetimi/2` shfaqën `08:25`, pa ndryshuar kodin. Pastaj ekzekutova `UPDATE udhetimet SET ora = '08:15' WHERE id = '2';` dhe e verifikova që ora u rikthye në `08:15`.
 
-## Prova 2: Lista bosh
+## Prova 2
 
 Hapat:
 
@@ -31,13 +31,13 @@ Rezultati:
 
 Me `WHERE false` faqja shfaqi `Nuk ka udhëtime për momentin.` pa fshirë rreshta. Pas heqjes së tij u kthyen tri kartat nga Neon.
 
-## Prova 3: Mungesa e lidhjes
+## Prova 3
 
 Hapat:
 
 E riemërtova përkohësisht variablën lokale `DATABASE_URL` në `DATABASE_URL_PA_TEST`, ndalova dhe rinisa `npm run dev`, dhe rifreskova listën. Pastaj e riktheva emrin `DATABASE_URL`, rinisa serverin dhe rifreskova përsëri.
 
-Rezultati:
+Rezultati real:
 
 Kur lidhja mungoi, faqja shfaqi `Nuk u lidhëm me databazën. Provo përsëri.`. Pas rikthimit të `DATABASE_URL`, tri udhëtimet u shfaqën përsëri. Skedari `.env.local` nuk u publikua.
 
