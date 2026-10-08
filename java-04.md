@@ -9,21 +9,37 @@
 
 ## Prova 1: Ndryshimi në databazë
 
-Në Neon/Vercel u ekzekutua:
+### Hapat
+
+Në Neon SQL Editor u ekzekutua:
 
 ```sql
 UPDATE udhetimet SET ora = '08:25' WHERE id = '2';
 ```
 
-Pas ndryshimit, deployment-i Production shfaqi `08:25` në listë/detaje. Ora u rikthye në `08:15` pas provës.
+### Rezultati real
+
+Pas rifreskimit, lista dhe faqja `/udhetimi/2` shfaqën `08:25`, pa ndryshuar kodin. Pastaj ekzekutova `UPDATE udhetimet SET ora = '08:15' WHERE id = '2';` dhe e verifikova që ora u rikthye në `08:15`.
 
 ## Prova 2: Lista bosh
 
-Query-ja për listën është gati për provën e përkohshme me `WHERE false`; pas heqjes së kushtit kthehen tri udhëtime nga Neon.
+### Hapat
+
+Në `src/lib/udhetimet.ts` shtova përkohësisht `WHERE false` në query-n `SELECT` të listës, e ruajta dhe rifreskova faqen. Pastaj e hoqa `WHERE false`, e ruajta përsëri dhe rifreskova faqen.
+
+### Rezultati real
+
+Me `WHERE false` faqja shfaqi `Nuk ka udhëtime për momentin.` pa fshirë rreshta. Pas heqjes së tij u kthyen tri kartat nga Neon.
 
 ## Prova 3: Mungesa e lidhjes
 
-Kur `DATABASE_URL` mungon, kodi shfaq `Nuk u lidhëm me databazën. Provo përsëri.`; variabla është konfiguruar në Vercel dhe `.env.local`.
+### Hapat
+
+E riemërtova përkohësisht variablën lokale `DATABASE_URL` në `DATABASE_URL_PA_TEST`, ndalova dhe rinisa `npm run dev`, dhe rifreskova listën. Pastaj e riktheva emrin `DATABASE_URL`, rinisa serverin dhe rifreskova përsëri.
+
+### Rezultati real
+
+Kur lidhja mungoi, faqja shfaqi `Nuk u lidhëm me databazën. Provo përsëri.`. Pas rikthimit të `DATABASE_URL`, tri udhëtimet u shfaqën përsëri. Skedari `.env.local` nuk u publikua.
 
 ## Kontroll teknik
 
