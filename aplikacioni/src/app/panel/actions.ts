@@ -1,0 +1,25 @@
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { ndryshoOren } from "@/lib/lejet";
+
+export async function ruajOren(formData: FormData) {
+  let mesazh: string;
+  try {
+    mesazh = await ndryshoOren(
+      String(formData.get("id") ?? ""),
+      String(formData.get("ora") ?? ""),
+    );
+  } catch {
+    mesazh = "databaza";
+  }
+
+  if (mesazh === "ruajtur") {
+    revalidatePath("/");
+    revalidatePath("/udhetimi/2");
+  }
+
+  // redirect eshte jashte try/catch, sepse Next.js e perdor per kontroll rrjedhe.
+  redirect(`/panel?m=${mesazh}`);
+}
