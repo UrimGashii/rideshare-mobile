@@ -1,58 +1,83 @@
-# Java 7 · Provo, korrigjo dhe shpjego RideShare-in
+# Java 7 - Provo, korrigjo dhe shpjego RideShare-in
 
-## Rasti im
+## Rasti im (P7-024, GitHub: UrimGashii)
 
-- Rasti 3 · Klikim apo rezervim
-- ID-ja e provës: `2`
-- Emri publik në GitHub: `UrimGashii`
+- Rasti 3 - Klikim apo rezervim
+- ID e proves: `2`
 
-## Parashikimi fillestar
+## Parashikimi
 
-Kur zgjedh të njëjtin udhëtim nga lista, ID-ja duhet të çojë te detajet e atij udhëtimi dhe vlerat duhet të jenë të njëjta. Te kërkesa demonstrative duhet të kuptohet se veprimi është vetëm simulim; nuk duhet të pretendohet rezervim ose njoftim real te shoferi.
+Kur zgjedh udhetimin me ID 2 nga lista, i njejti ID dhe te njejtat vlera duhet te shfaqen ne detaje. Kerkesa duhet te jete vetem simulim: nuk ka rezervim dhe nuk dergohet njoftim real te shoferi.
 
-## Dy probleme ose paqartësi
+## Ndryshimi i ri
 
-1. Në faqen e detajeve nuk shfaqej qartë ID-ja, prandaj ishte më e vështirë të verifikohej se lista dhe detajet përdornin të njëjtin udhëtim.
-2. Faqja e kërkesës e quante veprimin simulim, por nuk e theksonte mjaftueshëm se nuk ishte rezervim real dhe nuk dërgonte njoftim te shoferi.
+Shtova shfaqjen e ID-se ne faqen e detajeve dhe nje mesazh te qarte qe kerkesa eshte demonstrative, pa rezervim real dhe pa njoftim te shoferit.
+
+## Dy probleme
+
+1. Faqja e detajeve nuk e shfaqte qarte ID-ne, prandaj ishte me e veshtire te verifikohej rrjedha liste -> detaje.
+2. Faqja e kerkeses nuk e theksonte mjaftueshem se veprimi nuk ishte rezervim real dhe nuk dergonte njoftim.
 
 ## Korrigjimi
 
-- Skedari: `aplikacioni/src/app/udhetimi/[id]/page.tsx`
-- Skedari: `aplikacioni/src/app/udhetimi/[id]/kerkesa/page.tsx`
-- Ndryshimi: shtova shfaqjen e ID-së në detaje dhe një mesazh të qartë statusi në faqen e kërkesës: veprimi është demonstrativ, pa rezervim real dhe pa njoftim te shoferi.
-- Arsyeja: përdoruesi duhet të dallojë një klikim/simulim nga një rezervim i vërtetë dhe të mund të ndjekë të njëjtin ID në të dy ekranet.
+Skedari: `aplikacioni/src/app/udhetimi/[id]/page.tsx`
 
-## Tri prova reale
+Skedari: `aplikacioni/src/app/udhetimi/[id]/kerkesa/page.tsx`
 
-### Prova 1 · Rrjedha listë → detaje → kërkesë
+Arsyeja: perdoruesi duhet te ndjeke te njejtin ID dhe te dalloje simulimin nga rezervimi real.
 
-- Hapat: hapa listën, zgjodha udhëtimin me ID `2`, hapa detajet dhe klikova “Provo kërkesën · simulim”.
-- Pritshmëria: detajet tregojnë të njëjtën ID, nisje, destinacion dhe orë; faqja tjetër tregon se është vetëm simulim.
-- Vëzhgimi: ID-ja `2` dhe vlerat përputhen; faqja shfaq “Kërkesë demonstrative · simulim” dhe sqaron se nuk ka rezervim real.
+## Prova 1
 
-### Prova 2 · Korrigjimi i simulimit
+### Hapat
 
-- Hapat: përsërita klikimin e kërkesës për ID-në `2`.
-- Pritshmëria: nuk shfaqet “u konfirmua” dhe nuk premtohet rezervim ose njoftim.
-- Vëzhgimi: shfaqet mesazhi se kërkesa nuk është dërguar te shoferi dhe se ruajtja/konfirmimi real do të shtohet më vonë. Prova kaloi.
+Hapa listen, zgjodha udhetimin me ID 2, hapa detajet dhe klikova “Provo kerkesen - simulim”.
 
-### Prova 3 · ID tjetër ose hyrje kufizuese
+### Pritshmeria
 
-- Hapat: hapa `/udhetimi/999`, një ID që nuk ekziston në të dhënat e provës.
-- Pritshmëria: ID-ja e panjohur të japë mesazh të qartë “Udhëtimi nuk u gjet”; me 0 vende të mos premtohet kërkesë.
-- Vëzhgimi: u shfaq faqja “Udhëtimi nuk u gjet” me lidhje për t’u kthyer te lista. Prova kaloi.
+Detajet duhet te tregojne ID 2, nisjen, destinacionin dhe oren e udhetimit te zgjedhur. Faqja tjeter duhet te tregoje se eshte simulim.
+
+### Verejtimi
+
+ID 2 dhe vlerat perputhen. Faqja shfaq “Kerkese demonstrative - simulim” dhe sqaron se nuk ka rezervim real.
+
+## Prova 2
+
+### Hapat
+
+Perserita klikimin e kerkeses per ID 2.
+
+### Pritshmeria
+
+Nuk duhet te shfaqet “u konfirmua” dhe nuk duhet te premtohet rezervim ose njoftim.
+
+### Verejtimi
+
+Shfaqet se kerkesa nuk eshte derguar te shoferi dhe se ruajtja/konfirmimi real do te shtohet me vone. Prova kaloi.
+
+## Prova 3
+
+### Hapat
+
+Hapa `/udhetimi/999`, nje ID qe nuk ekziston ne te dhenat e proves.
+
+### Pritshmeria
+
+Duhet te shfaqet mesazh i qarte “Udhetimi nuk u gjet” dhe lidhje per t’u kthyer te lista.
+
+### Verejtimi
+
+U shfaq faqja “Udhetimi nuk u gjet” me lidhje per kthim te lista. Prova kaloi.
 
 ## Kontrolli teknik
 
 - `npm.cmd run build`: kaloi me sukses.
-- Ndryshimi u kontrollua në projektin lokal.
+- Ndryshimi u kontrollua ne projektin lokal.
 
-## Versionet në GitHub
+## Versionet ne GitHub
 
 - Para: https://github.com/UrimGashii/rideshare-mobile/commit/c384aa174006c63deb6fbe86a5f9a12fc7354f24
 - Pas: https://github.com/UrimGashii/rideshare-mobile/commit/a2d310b
-- Issue i dorëzimit: duhet të krijohet në repository-n e lëndës nga formulari i dorëzimit; ky link nuk është i disponueshëm në repository-n personal.
 
 ## Ndihma nga AI
 
-Kërkova ndihmë për të kontrolluar strukturën e projektit, për të gjetur faqet e listës/detajeve/kërkesës dhe për të verifikuar build-in. Ndryshimin e kuptova dhe e kontrollova në aplikacionin tim; nuk publikova të dhëna reale ose `.env`.
+AI me ndihmoi te kontrolloj strukturen e projektit, te gjej faqet e listes/detajeve/kerkeses dhe te verifikoj build-in. Ndryshimin e kuptova dhe e kontrollova ne aplikacionin tim.
