@@ -20,9 +20,7 @@ Shtova shfaqjen e ID-se ne faqen e detajeve dhe nje mesazh te qarte qe kerkesa e
 
 ## Korrigjimi
 
-Skedari: `aplikacioni/src/app/udhetimi/[id]/page.tsx`
-
-Skedari: `aplikacioni/src/app/udhetimi/[id]/kerkesa/page.tsx`
+Skedari: aplikacioni/src/app/udhetimi/[id]/page.tsx
 
 Arsyeja: perdoruesi duhet te ndjeke te njejtin ID dhe te dalloje simulimin nga rezervimi real.
 
@@ -32,11 +30,11 @@ Arsyeja: perdoruesi duhet te ndjeke te njejtin ID dhe te dalloje simulimin nga r
 
 Hapa listen, zgjodha udhetimin me ID 2, hapa detajet dhe klikova “Provo kerkesen - simulim”.
 
-### Pritshmeria
+### Pritshmëria
 
 Detajet duhet te tregojne ID 2, nisjen, destinacionin dhe oren e udhetimit te zgjedhur. Faqja tjeter duhet te tregoje se eshte simulim.
 
-### Verejtimi
+### Vëzhgimi
 
 ID 2 dhe vlerat perputhen. Faqja shfaq “Kerkese demonstrative - simulim” dhe sqaron se nuk ka rezervim real.
 
@@ -46,11 +44,11 @@ ID 2 dhe vlerat perputhen. Faqja shfaq “Kerkese demonstrative - simulim” dhe
 
 Perserita klikimin e kerkeses per ID 2.
 
-### Pritshmeria
+### Pritshmëria
 
 Nuk duhet te shfaqet “u konfirmua” dhe nuk duhet te premtohet rezervim ose njoftim.
 
-### Verejtimi
+### Vëzhgimi
 
 Shfaqet se kerkesa nuk eshte derguar te shoferi dhe se ruajtja/konfirmimi real do te shtohet me vone. Prova kaloi.
 
@@ -60,11 +58,11 @@ Shfaqet se kerkesa nuk eshte derguar te shoferi dhe se ruajtja/konfirmimi real d
 
 Hapa `/udhetimi/999`, nje ID qe nuk ekziston ne te dhenat e proves.
 
-### Pritshmeria
+### Pritshmëria
 
 Duhet te shfaqet mesazh i qarte “Udhetimi nuk u gjet” dhe lidhje per t’u kthyer te lista.
 
-### Verejtimi
+### Vëzhgimi
 
 U shfaq faqja “Udhetimi nuk u gjet” me lidhje per kthim te lista. Prova kaloi.
 
