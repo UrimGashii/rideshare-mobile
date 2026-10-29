@@ -4,7 +4,7 @@
 
 - Rasti 3 · Klikim apo rezervim
 - ID-ja e provës: `[SHËNO ID-në që përdore]`
-- Emri publik në GitHub: `[SHËNO emrin]`
+- Emri publik në GitHub: `UrimGashii`
 
 ## Parashikimi fillestar
 
@@ -49,8 +49,8 @@ Kur zgjedh të njëjtin udhëtim nga lista, ID-ja duhet të çojë te detajet e 
 
 ## Versionet në GitHub
 
-- Para: `[NGJIT LINKUN E COMMIT-IT PARA KORRIGJIMIT]`
-- Pas: `[NGJIT LINKUN E COMMIT-IT TË KORRIGJIMIT]`
+- Para: https://github.com/UrimGashii/rideshare-mobile/commit/c384aa174006c63deb6fbe86a5f9a12fc7354f24
+- Pas: https://github.com/UrimGashii/rideshare-mobile/commit/a2d310b
 - Issue i dorëzimit: `[NGJIT LINKUN E ISSUE-T]`
 
 ## Ndihma nga AI
