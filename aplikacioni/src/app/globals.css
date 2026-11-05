@@ -81,3 +81,31 @@ h1 {
   color: #a0a8b8;
   cursor: default;
 }
+
+.location-box {
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid #8090aa;
+  border-radius: 12px;
+}
+
+.location-box h2 { margin-top: 0; }
+
+.location-summary,
+.manual-location p { color: #b4f0c0; }
+
+.manual-location {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.manual-location input {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #8090aa;
+  border-radius: 8px;
+  background: #121d32;
+  color: #edf2fc;
+  font: inherit;
+}

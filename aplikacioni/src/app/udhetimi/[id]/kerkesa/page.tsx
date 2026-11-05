@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { gjejUdhetimin } from "@/lib/udhetimet";
+import { PikaNisjes } from "@/components/PikaNisjes";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -17,6 +18,7 @@ export default async function Kerkesa({ params }: { params: Promise<{ id: string
       <h1>Kërkesë demonstrative · simulim</h1>
       <p role="status">Kjo nuk është rezervim real dhe nuk i dërgon njoftim shoferit.</p>
       <p>Kërkesa për {udhetim.nisja} nuk është dërguar te shoferi.</p>
+      <PikaNisjes />
       <p>Ruajtjen dhe konfirmimin real do ta shtojmë më vonë.</p>
     </> : <h1>Nuk ka vende të lira.</h1>}
   </main>;
