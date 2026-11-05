@@ -50,6 +50,28 @@ Shtova komponentin `aplikacioni/src/components/PikaNisjes.tsx` dhe e përdora n�
 
 **Kontrolli lokal:** Kontrolli i `navigator.geolocation` ka gjendje `pa mbështetje` dhe lejon vendtakimin manual. Plotëso rezultatin real pas testimit.
 
+## Prova me një hyrje të re
+
+### Hyrja që provova
+
+Në faqen `/udhetimi/2/kerkesa` hapa kërkesën demonstrative, zgjodha `Përdor vendndodhjen time`, refuzova lejen dhe pastaj shkrova hyrjen fiktive `Biblioteka e AAB-së` te fusha `Shkruaj vendtakimin`. Zgjodha `Ruaj vendtakimin`.
+
+### Parashikimi im para klikimit
+
+Pritja ime ishte që leja të mos kërkohej gjatë hapjes së faqes, por vetëm pas klikimit. Pas refuzimit, faqja nuk duhej të bllokohej dhe duhet të shfaqte alternativën manuale. Pas ruajtjes, duhet të shfaqej vendtakimi fiktiv dhe jo adresa ime reale.
+
+### Çfarë pashë realisht
+
+Në kontrollin e aplikacionit, kërkesa për leje u nis vetëm pas klikimit. Pas refuzimit u shfaq mesazhi se leja u refuzua dhe fusha `Shkruaj vendtakimin`. Pas futjes së `Biblioteka e AAB-së` dhe klikimit të ruajtjes, u shfaq `Vendtakimi: Biblioteka e AAB-së`. Nuk u shfaq adresë reale dhe kërkesa mbeti simulim.
+
+### Skedari dhe funksioni që e shpjegojnë
+
+`aplikacioni/src/components/PikaNisjes.tsx` — funksioni `perdorVendndodhjen` e thërret `navigator.geolocation.getCurrentPosition` vetëm pas klikimit dhe trajton refuzimin/mungesën e mbështetjes; funksioni `ruajVendtakimin` ruan alternativën manuale. Komponenti përdoret në `aplikacioni/src/app/udhetimi/[id]/kerkesa/page.tsx`.
+
+### Çfarë kuptova ose korrigjova
+
+Kuptova se leja duhet të kërkohet nga një veprim i qartë i përdoruesit, jo gjatë renderimit të faqes. Korrigjova rrjedhën që refuzimi të jetë i rikuperueshëm: përdoruesi mund të vazhdojë me vendtakim manual. Gjithashtu përdora vetëm të dhëna fiktive në provë dhe në raport, që dëshmitë të mos publikojnë vendndodhjen time reale.
+
 ## Kontrolli teknik
 
 - `npm.cmd run build`: duhet të përfundojë me sukses.
