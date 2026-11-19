@@ -1,22 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { gjejUdhetimin } from "@/lib/udhetimet";
-
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
-
-export default async function Detajet({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  let udhetim;
-  try { udhetim = await gjejUdhetimin(id); }
-  catch { return <main><h1>RideShare</h1><p role="alert">Nuk u lidhëm me databazën. Provo përsëri.</p><Link href="/">← Kthehu te lista</Link></main>; }
-  if (!udhetim) notFound();
-  return <main>
-    <Link href="/">← Kthehu te lista</Link>
-    <p>ID e udhëtimit: {udhetim.id}</p>
-    <h1>{udhetim.nisja} – {udhetim.destinacioni}</h1>
-    <p>Ora: {udhetim.ora}</p><p>Vendtakimi: {udhetim.vendtakimi}</p>
-    <p>Vende të lira: {udhetim.vende}</p>
-    {udhetim.vende > 0 ? <Link className="action" href={`/udhetimi/${id}/kerkesa`}>Provo kërkesën · simulim</Link> : <button className="action" disabled>Kërkesa është joaktive: nuk ka vende të lira</button>}
-  </main>;
-}
+export default async function Detajet({ params }: { params: Promise<{ id: string }> }) { const { id } = await params; let udhetim; try { udhetim = await gjejUdhetimin(id); } catch { return <main><h1>RideShare</h1><p role="alert">Nuk u lidhëm me databazën. Provo përsëri.</p><Link href="/">← Kthehu te lista</Link></main>; } if (!udhetim) notFound(); return <main><Link href="/">← Kthehu te lista</Link><p>ID e udhëtimit: {udhetim.id}</p><h1>{udhetim.nisja} – {udhetim.destinacioni}</h1><p>Ora: {udhetim.ora}</p><p>Vendtakimi: {udhetim.vendtakimi}</p><p>Vende të lira: {udhetim.vende}</p>{udhetim.vende > 0 ? <Link className="action" href={`/udhetimi/${id}/kerkesa`}>Hap si udhëtar</Link> : <button className="action" disabled>Kërkesa është joaktive: nuk ka vende të lira</button>}<Link className="action secondary" href={`/udhetimi/${id}/shofer`}>Hap si shofer</Link></main>; }
