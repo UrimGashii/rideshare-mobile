@@ -81,6 +81,17 @@ h1 {
   color: #a0a8b8;
   cursor: default;
 }
+.secondary { background: #1b2942; margin-left: 8px; }
+.live-card { margin-top: 22px; padding: 20px; border: 1px solid #8090aa; border-radius: 12px; background: #111c30; }
+.trip-heading { display: grid; gap: 6px; }
+.trip-heading span { color: #89ddff; font-size: .8rem; letter-spacing: .08em; }
+.seats { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-top: 1px solid #33445e; border-bottom: 1px solid #33445e; }
+.seats span { font-size: 2rem; color: #b4f0c0; }
+.live-card h2 { font-size: 1rem; margin-top: 24px; }
+.request-status { font-size: 1.4rem; font-weight: 700; }
+.accepted { color: #b4f0c0; }
+.sync-note, .poll-note { color: #b4c1d6; font-size: .9rem; }
+.offline { color: #ffd18a; }
 
 .location-box {
   margin-top: 24px;
