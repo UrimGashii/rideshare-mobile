@@ -56,6 +56,15 @@ h1 {
   font-size: 0.95rem;
   color: #b4c1d6;
 }
+.favorite-button { min-height: 42px; padding: 8px 14px; border: 1px solid #8090aa; border-radius: 8px; background: #19243a; color: #edf2fc; cursor: pointer; font: inherit; }
+.favorite-button:hover:not(:disabled) { border-color: #ffd166; }
+.favorite-button.saved { color: #ffd166; border-color: #ffd166; cursor: default; }
+.favorite-button span { font-size: 1.25rem; }
+.favorite-message { margin-top: 8px; }
+.saved-text { color: #b4f0c0 !important; }
+.favorites-summary { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin-top: 24px; padding: 16px; border: 1px solid #8090aa; border-radius: 12px; }
+.favorites-summary span { color: #ffd166; font-size: 1.4rem; font-weight: 700; }
+.favorites-summary small { grid-column: 1 / -1; color: #b4c1d6; }
 
 .action {
   display: inline-flex;

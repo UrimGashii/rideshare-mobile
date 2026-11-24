@@ -1,0 +1,2 @@
+import { ruajPreferim } from "@/lib/preferencat";
+export async function POST(_request: Request, { params }: { params: { id: string } }) { try { const result = await ruajPreferim(params.id); if ("error" in result) return Response.json(result, { status: result.error === "ndaluar" ? 403 : 404 }); return Response.json(result, { status: 201 }); } catch { return Response.json({ error: "Preferimi nuk u ruajt." }, { status: 503 }); } }
