@@ -101,6 +101,15 @@ h1 {
 .accepted { color: #b4f0c0; }
 .sync-note, .poll-note { color: #b4c1d6; font-size: .9rem; }
 .offline { color: #ffd18a; }
+.notification-link { display: block; margin-top: 14px; }
+.notifications { margin-top: 24px; }
+.notifications h1 { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.badge { font-size: .85rem; color: #0b1220; background: #ffd166; border-radius: 999px; padding: 5px 10px; }
+.notifications ul { display: grid; gap: 10px; padding: 0; list-style: none; }
+.notifications li { border: 1px solid #8090aa; border-radius: 10px; background: #111c30; }
+.notifications li a { display: block; padding: 14px; color: #edf2fc; }
+.notifications li.unread { border-color: #89ddff; }
+.notifications li small { display: block; margin-top: 7px; color: #b4c1d6; }
 
 .location-box {
   margin-top: 24px;

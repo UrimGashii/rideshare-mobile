@@ -72,10 +72,18 @@ export async function pranoKerkese(requestId: string) {
       UPDATE udhetimet u SET vende = u.vende - 1
       FROM candidate c WHERE u.id = c.udhetim_id AND u.vende > 0
       RETURNING u.id
+    ),
+    accepted AS (
+      UPDATE kerkesat k SET status = 'pranuar', ndryshuar_me = NOW()
+      FROM changed_trip c WHERE k.id = (SELECT id FROM candidate)
+      RETURNING k.id, k.status, k.udhetar_id, k.udhetim_id
+    ), created_notification AS (
+      INSERT INTO njoftimet (kerkesa_id, marresi_id, lloji)
+      SELECT id, udhetar_id, 'pranuar' FROM accepted
+      ON CONFLICT (kerkesa_id) DO NOTHING
+      RETURNING id
     )
-    UPDATE kerkesat k SET status = 'pranuar', ndryshuar_me = NOW()
-    FROM changed_trip c WHERE k.id = (SELECT id FROM candidate)
-    RETURNING k.id, k.status
+    SELECT a.id, a.status FROM accepted a
   `;
   return rows[0] ? { request: rows[0] } : { error: "nuk_mund_te_pranohet" };
 }
